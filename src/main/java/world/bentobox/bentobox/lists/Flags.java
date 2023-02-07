@@ -329,30 +329,34 @@ public final class Flags {
             .clickHandler(new CycleClick("CHANGE_SETTINGS", RanksManager.MEMBER_RANK, RanksManager.OWNER_RANK))
             .mode(Flag.Mode.TOP_ROW).build();
 
+    private static final String SCULKSENSOR = "SCULK_SENSOR";
+
     /**
      * This flag allows choosing which island member group can activate sculk sensors.
      * TODO: Enums#getIfPresent is used to support 1.18
      * @since 1.21.0
      */
-    public static final Flag SCULK_SENSOR = new Flag.Builder("SCULK_SENSOR", Enums.getIfPresent(Material.class, "SCULK_SENSOR").or(Material.BARRIER)).
+    public static final Flag SCULK_SENSOR = new Flag.Builder(SCULKSENSOR, Enums.getIfPresent(Material.class, SCULKSENSOR).or(Material.BARRIER)).
             listener(new SculkSensorListener()).
             type(Type.PROTECTION).
             defaultSetting(true).
             defaultRank(RanksManager.MEMBER_RANK).
-            clickHandler(new CycleClick("SCULK_SENSOR", RanksManager.VISITOR_RANK, RanksManager.MEMBER_RANK)).
+            clickHandler(new CycleClick(SCULKSENSOR, RanksManager.VISITOR_RANK, RanksManager.MEMBER_RANK)).
             build();
+
+    private static final String SCULKSHRIEKER = "SCULK_SHRIEKER";
 
     /**
      * This flag allows choosing which island member group can activate sculk shrieker.
      * TODO: Enums#getIfPresent is used to support 1.18
      * @since 1.21.0
      */
-    public static final Flag SCULK_SHRIEKER = new Flag.Builder("SCULK_SHRIEKER", Enums.getIfPresent(Material.class, "SCULK_SHRIEKER").or(Material.BARRIER)).
+    public static final Flag SCULK_SHRIEKER = new Flag.Builder(SCULKSHRIEKER, Enums.getIfPresent(Material.class, SCULKSHRIEKER).or(Material.BARRIER)).
             listener(new SculkShriekerListener()).
             type(Type.PROTECTION).
             defaultSetting(true).
             defaultRank(RanksManager.MEMBER_RANK).
-            clickHandler(new CycleClick("SCULK_SHRIEKER", RanksManager.VISITOR_RANK, RanksManager.MEMBER_RANK)).
+            clickHandler(new CycleClick(SCULKSHRIEKER, RanksManager.VISITOR_RANK, RanksManager.MEMBER_RANK)).
             build();
 
     /*
@@ -393,13 +397,13 @@ public final class Flags {
      * @deprecated see {@link #ANIMAL_NATURAL_SPAWN} and {@link #ANIMAL_SPAWNERS_SPAWN}.
      * @since 1.14.0
      */
-    @Deprecated
+    @Deprecated(since="1.14.0", forRemoval=true)
     public static final Flag ANIMAL_SPAWN = new Flag.Builder("ANIMAL_SPAWN", Material.APPLE).defaultSetting(true).type(Type.SETTING).build();
     /**
      * @deprecated see {@link #MONSTER_NATURAL_SPAWN} and {@link #MONSTER_SPAWNERS_SPAWN}.
      * @since 1.14.0
      */
-    @Deprecated
+    @Deprecated(since="1.14.0", forRemoval=true)
     public static final Flag MONSTER_SPAWN = new Flag.Builder("MONSTER_SPAWN", Material.SPAWNER).defaultSetting(true).type(Type.SETTING).build();
 
     /**
